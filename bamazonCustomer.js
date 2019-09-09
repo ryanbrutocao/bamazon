@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
   if (err) throw err;
-  console.log("connected as ID: "+ connection.threadId + "\n");
+  // console.log("connected as ID: "+ connection.threadId + "\n");
 });
 
 
@@ -39,19 +39,20 @@ function listItems(){
       }
     ])
     .then(function(answer){
-      console.log("answer: ",answer);
+      // console.log("answer: ",answer);
       // console.log("vol:" , answer.unitVol);
       var query = "SELECT * FROM products WHERE ?";
       connection.query(query, {item_id: answer.itemID}, function(err, res) {
         if (err) throw err;
         for (let i=0; i<res.length; i++){
           // console.log("ID Response: ",res[i]);
-          console.log("stock quantity: ", res[i].stock_quantity);
+          // console.log("stock quantity: ", res[i].stock_quantity);
           if (answer.unitVol<=res[i].stock_quantity){
-            console.log("yay you can buy this product");
+            // console.log("yay you can buy this product");
             order(parseInt(answer.unitVol), res)
           } else {
-            console.log("There is not enough of the product in stock");
+            console.log("There is not enough of the product in stock");3
+            console.log("-------------------------- \n");
             displayItems()
           }
         }
@@ -63,11 +64,11 @@ function listItems(){
 }  
 
 function order (unit_vol, data){
-console.log("data", data[0]);
-console.log("order volume", unit_vol);
-console.log("item ID: ", data[0].item_id);
+// console.log("data", data[0]);
+// console.log("order volume", unit_vol);
+// console.log("item ID: ", data[0].item_id);
 var updatedQuantity = data[0].stock_quantity - unit_vol;
-console.log("updated quantity: ",updatedQuantity);
+// console.log("updated quantity: ",updatedQuantity);
 var query = "UPDATE products SET ? WHERE ?;";
 var plugin = [{
   stock_quantity: updatedQuantity,

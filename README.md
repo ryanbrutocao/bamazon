@@ -28,6 +28,8 @@ Homework 12
 * However, if your store does have enough of the product, you should fulfill the customer's order.
 
 * Once the update goes through, show the customer the total cost of their purchase.
+![Example](/images/bamazon_part_1_order.PNG)
+
 
 #### The goals of bamazonManager.js are listed below:
 Create a new Node application called bamazonManager.js. Running this application will:
@@ -40,9 +42,19 @@ Create a new Node application called bamazonManager.js. Running this application
 1. Add New Product
 
 * If a manager selects View Products for Sale, the app should list every available item: the item IDs, names, prices, and quantities.
+![GitHub Logo](/images/view_product.png)
+
+
 * If a manager selects View Low Inventory, then it should list all items with an inventory count lower than five.
+![GitHub Logo](/images/low_inventory.png)
+
+
 * If a manager selects Add to Inventory, your app should display a prompt that will let the manager "add more" of any item currently in the store.
+![GitHub Logo](/images/add_inventory.png)
+
+
 * If a manager selects Add New Product, it should allow the manager to add a completely new product to the store.
+![GitHub Logo](/images/add_product.png)
 
 
 
