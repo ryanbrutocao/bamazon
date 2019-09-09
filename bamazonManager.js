@@ -13,20 +13,8 @@ connection.connect(function(err) {
   console.log("\n"+"connected as ID: "+ connection.threadId + "\n");
 });
 
-// function list(){
-//   var query = "SELECT * FROM products";
-//   connection.query(query, function(err, res) {
-//     if (err) throw err;
-//     console.table(res);
-//     console.log(" first above here");
-//     addInventory(res)
-//   })
-
-// }
-// console.log("new second above here");
 
 function start(){
-
   
   inquirer.prompt([
     {
@@ -38,7 +26,6 @@ function start(){
     
   }
 ]).then(function(res){
-  // console.log("answer: ", res.managerOptions);
  
   switch(res.managerOptions) {
     case 'View products for sale':
@@ -58,16 +45,12 @@ function start(){
 start();
   
 function products(){
-          // console.log("working!");
           var query = "SELECT * FROM products";
           connection.query(query, function(err, res) {
     if (err) throw err;
     console.table(res);
- 
-    // addInventory(res)
     start()
   })
-
 }
 
 function lowInventory() {
@@ -77,10 +60,7 @@ function lowInventory() {
    console.table(res);
    console.log("--------------------------------- \n");
    start()
-   
-    
   })
-
 }
 
 
@@ -126,9 +106,6 @@ function addInventory() {
       )}
       
 function add(volAdd,stockQuant, itemid){
-  // console.log("v",volAdd);
-  // console.log("s",stockQuant);
-  // console.log("itemIDDDD:", itemid);
   var updatedInventory = volAdd + stockQuant;
   var query = "UPDATE products SET ? WHERE ?;";
   var plugin = [{
@@ -146,11 +123,7 @@ start()
 }
 
 
-
 function newProduct(){
-  
-
-
   inquirer.prompt(
     [
       { 
@@ -182,16 +155,25 @@ function newProduct(){
         name: "newQuantity",
         message: "How many of the new product do you wish to add to inventory?"
       }
-      
-      
     ])
     .then(function(answer){
 
-      console.log(answer
-        );
-
-
-      console.log("--------------------------------- \n");
-      start()
+var query = "INSERT INTO products SET ?";
+var plugin = [
+  {
+    item_id:answer.newID,
+    product_name: answer.newItem,
+    department_name: answer.newDept,
+    price: answer.newPrice,
+    stock_quantity: answer.newQuantity
+  }
+]
+connection.query(query, plugin, function(err, res){
+  if (err) throw err;
+  console.log(res);
+  start()
+  console.log("--------------------------------- \n");
+})
+ start()
     })
   }
