@@ -42,7 +42,7 @@ Create a new Node application called bamazonManager.js. Running this application
 1. Add New Product
 
 * If a manager selects View Products for Sale, the app should list every available item: the item IDs, names, prices, and quantities.
-![View Products](/images/view_product.PNG)
+![View Products](/images/view_products.PNG)
 
 
 * If a manager selects View Low Inventory, then it should list all items with an inventory count lower than five.
@@ -50,6 +50,7 @@ Create a new Node application called bamazonManager.js. Running this application
 
 
 * If a manager selects Add to Inventory, your app should display a prompt that will let the manager "add more" of any item currently in the store.
+
 ![Add Inventory](/images/add_inventory.PNG)
 
 
